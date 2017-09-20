@@ -3,8 +3,9 @@
 
 import os
 import sys
-from perceptron import Perceptron
 
+sys.path.append('../')
+from common.ml import *
 
 reload(sys)
 sys.setdefaultencoding("utf-8")
@@ -13,12 +14,12 @@ sys.setdefaultencoding("utf-8")
 #定义激活函数
 f = lambda x:x
 
-class LinearUnit(Perceptron):
+class LinearUnit(Ml):
 	def __init__(self, input_num):
 		'''
 		初始化线性单元,设置输入参数的个数
 		'''
-		Perceptron.__init__(self, input_num, f)
+		Ml.__init__(self, input_num, f)
 
 	
 def train_linear_unit():
@@ -33,7 +34,7 @@ def train_linear_unit():
 
 def get_training_dataset():
 	'''
-
+	训练样本
 	'''
 	# 输入向量列表，每一项是工作年限
 	input_vecs = [[5], [3], [8], [1.4], [10.1]]
