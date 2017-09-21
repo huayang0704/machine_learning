@@ -1,14 +1,6 @@
 #!/usr/bin/python
 #coding=utf8
 
-
-import os
-import sys
-
-
-reload(sys)
-sys.setdefaultencoding("utf-8")
-
 ##************************************************************************
 ## ** 随机梯度下降算法公共脚本
 ## ** 参数迭代规则: 
@@ -20,12 +12,19 @@ sys.setdefaultencoding("utf-8")
 ## ** weibo: paul_华
 ##************************************************************************
 
+import os
+import sys
 
-class Ml(object):
+reload(sys)
+sys.setdefaultencoding("utf-8")
+
+
+class Gradient(object):
 	def __init__(self, input_num, activator):
 		'''
 		初始化感知器,设置输出参数的个数,以及激活函数
-		激活函数的类型为: double -> double
+		input_num: 参数(权重w)的个数
+		activator: 激活函数
 		'''
 		self.activator = activator
 		#权重初始化为0
@@ -49,12 +48,15 @@ class Ml(object):
 
 	def train(self, input_vecs, labels, iteration, rate):
 		'''
-		输入训练数据:一组向量、与每个向量对应的label;以及训练的轮数,学习率
+		输入训练数据
+		input_vecs: 一组向量、
+		labels: 与每个向量对应的label
+		interation: 以及训练的轮数
+		rate: 学习率
 		'''
 		for i in range(iteration):
 			self._one_iteration(input_vecs, labels, rate)
 
-	
 	def _one_iteration(self, input_vecs, labels, rate):
 		'''
 		一次迭代把所有的数据都过一编
@@ -76,15 +78,15 @@ class Ml(object):
 		# 把input_vec[x1,x2,x3,...]和weights[w1,w2,w3,...]打包在一起
 		# 变成[(x1,w1),(x2,w2),(x3,w3),...]
 		# 然后利用感知器规则更新权重
-		print 'imput_vec:', input_vec,'output:',output
-		print 'befor bias:', self.bias, 'befor weights:', self.weights
+		#print 'imput_vec:', input_vec,'output:',output
+		#print 'befor bias:', self.bias, 'befor weights:', self.weights
 		delta = label - output
 		self.weights = map(lambda (x,w): w + rate * delta * x, zip(input_vec, self.weights))
 		#更新bias
 		self.bias += rate * delta
 		#print 'training:**********'
-		print 'bias:', self.bias, 'weights:', self.weights
-		print '\n'
+		#print 'bias:', self.bias, 'weights:', self.weights
+		#print '\n'
 
 ###--------------------------------------------------------------------------------------------
 
@@ -123,7 +125,7 @@ def train_and_perceptron():
 	使用and真值表训练感知器
 	'''
 	# 创建感知器，输入参数个数为2（因为and是二元函数），激活函数为f
-	p = Perceptron(2, f)
+	p = Gradient(2, f)
 	# 训练，迭代10轮, 学习速率为0.1
 	input_vecs, labels = get_training_dataset()
 	#input_vecs, labels = get_training_dataset2()

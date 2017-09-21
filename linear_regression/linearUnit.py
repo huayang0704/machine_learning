@@ -1,11 +1,20 @@
 #!/usr/bin/python
 #coding=utf8
 
+##************************************************************************
+## ** 线性单元
+## **
+## **
+##************************************************************************
+## ** qq: 876253250
+## ** weibo: paul_华
+##************************************************************************
+
 import os
 import sys
 
 sys.path.append('../')
-from common.ml import *
+from common.gradient import *
 
 reload(sys)
 sys.setdefaultencoding("utf-8")
@@ -14,12 +23,12 @@ sys.setdefaultencoding("utf-8")
 #定义激活函数
 f = lambda x:x
 
-class LinearUnit(Ml):
+class LinearUnit(Gradient):
 	def __init__(self, input_num):
 		'''
 		初始化线性单元,设置输入参数的个数
 		'''
-		Ml.__init__(self, input_num, f)
+		Gradient.__init__(self, input_num, f)
 
 	
 def train_linear_unit():

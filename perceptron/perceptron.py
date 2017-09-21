@@ -14,8 +14,7 @@ import os
 import sys
 
 sys.path.append('../')
-#from common import ml
-from common.ml import *
+from common.gradient import *
 
 
 reload(sys)
@@ -44,7 +43,7 @@ def train_and_perceptron():
 	使用and真值表训练感知器
 	'''
 	# 创建感知器，输入参数个数为2（因为and是二元函数），激活函数为f
-	p = Ml(2, f)
+	p = Gradient(2, f)
 	# 训练，迭代10轮, 学习速率为0.1
 	input_vecs, labels = get_training_dataset()
 	p.train(input_vecs, labels, 5, 0.1)
