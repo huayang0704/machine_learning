@@ -85,8 +85,8 @@ class Gradient(object):
 		#更新bias
 		self.bias += rate * delta
 		#print 'training:**********'
-		#print 'bias:', self.bias, 'weights:', self.weights
-		#print '\n'
+		print 'bias:', self.bias, 'weights:', self.weights
+		print '\n'
 
 ###--------------------------------------------------------------------------------------------
 

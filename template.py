@@ -4,7 +4,7 @@
 ##************************************************************************
 ## ** 模板脚本
 ## **
-## **
+## **create: 2017-10-13
 ##************************************************************************
 ## ** qq: 876253250
 ## ** weibo: paul_华
@@ -16,8 +16,9 @@ import os
 import datetime
 import numpy as np
 
+#sys.path.append('../')
 from perceptron.perceptron import *
-from common.ml import *
+from common.gradient import *
 
 reload(sys)
 sys.setdefaultencoding("utf-8")

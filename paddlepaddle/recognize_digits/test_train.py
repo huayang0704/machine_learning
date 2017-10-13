@@ -102,7 +102,12 @@ if __name__ == "__main__":
 	test_data = []
 	cur_dir = os.path.dirname(os.path.realpath(__file__))
 	#test_data.append((load_image(cur_dir + '/infer_3.png'), ))
-	test_data.append((load_image(cur_dir + '/4.jpeg'), ))
+	#test_data.append((load_image(cur_dir + '/4.jpeg'), ))
+	#test_data.append((load_image(cur_dir + '/1.jpeg'), ))
+	#test_data.append((load_image(cur_dir + '/1-1.jpeg'), ))
+	#test_data.append((load_image(cur_dir + '/3.jpeg'), ))
+	#test_data.append((load_image(cur_dir + '/6.jpeg'), ))
+	test_data.append((load_image(cur_dir + '/44.jpeg'), ))
 
 	with open('params_pass_4.tar', 'r') as f:
 		parameters = paddle.parameters.Parameters.from_tar(f)
