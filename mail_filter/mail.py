@@ -53,14 +53,16 @@ def train_bayes(train_matrix, categories):
             single_p0_vec += train_matrix[i]
             p0_sum += sum(train_matrix[i])
 
-    #print 'single_p1_vec:', single_p1_vec
-    #print 'single_p1_vec / p1_sum:', single_p1_vec / p1_sum
     #print 'single_p0_vec:', single_p0_vec
+    #print 'p0 sums:', p0_sum
     #print 'single_p0_vec / p0_sum', single_p0_vec / p0_sum
+    #print 'single_p1_vec:', single_p1_vec
+    #print 'p1_sum:', p1_sum
+    #print 'single_p1_vec / p1_sum:', single_p1_vec / p1_sum
     p1_vec = log(single_p1_vec / p1_sum)  # 取对数
     p0_vec = log(single_p0_vec / p0_sum)
-    #print 'p1_vec', p1_vec
     #print 'p0_vec:', p0_vec
+    #print 'p1_vec', p1_vec
     return p0_vec, p1_vec, p1
 
 
@@ -151,11 +153,10 @@ def train_and_write(train_list, class_list):
     for train in train_list:
         train_matrix.append(set_of_words_to_vec(vocab_list, train))
 
-    print 'train data matrix:', train_matrix
     p0V, p1V, p1 = train_bayes(array(train_matrix), array(class_list))
     # print 'p0V:', p0V
     # print 'p1V:', p1V
-    # print 'pAb:', pAb
+    print 'pAb:', p1
     # 保存参数
     file.save_parameters("p0.txt", p0V)
     file.save_parameters("p1V.txt", p1V)
@@ -192,17 +193,17 @@ def test_paramters(test_datas):
 if __name__ == "__main__":
     start = datetime.datetime.now()
 
-    data_list = file.read_file("train.txt")
+    data_list = file.read_file("train.data")
     print len(data_list)
 
-    train_nums = 2
-    test_nums = 1
+    train_nums = 9700
+    test_nums = 100
 
     # train data
-    train_data = data_list[0:train_nums]
-    train_data, class_data = load_data(train_data)
-    train_list = word_segment(train_data)
-    train_and_write(train_list, class_data)
+    #train_data = data_list[0:train_nums]
+    #train_data, class_data = load_data(train_data)
+    #train_list = word_segment(train_data)
+    #train_and_write(train_list, class_data)
 
     #test
     test_paramters(data_list[train_nums:train_nums + test_nums])
